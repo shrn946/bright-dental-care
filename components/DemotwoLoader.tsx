@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 interface DemotwoLoaderProps {
   bodyContent: string;
@@ -8,7 +8,16 @@ interface DemotwoLoaderProps {
 }
 
 export default function DemotwoLoader({ bodyContent, bodyClass }: DemotwoLoaderProps) {
+  const [hasMounted, setHasMounted] = useState(false);
+
+  // Defer rendering until client-side mount completes to avoid SSR hydration mismatches
   useEffect(() => {
+    setHasMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!hasMounted) return;
+
     // Apply body classes for Elementor styles to target
     const body = document.body;
     const originalClasses = body.className;
@@ -106,7 +115,17 @@ export default function DemotwoLoader({ bodyContent, bodyClass }: DemotwoLoaderP
       // Clean up dynamically loaded scripts
       loadedScripts.forEach((s) => s.remove());
     };
-  }, [bodyContent, bodyClass]);
+  }, [hasMounted, bodyContent, bodyClass]);
+
+  // SSR and initial client hydration shows a clean placeholder
+  if (!hasMounted) {
+    return (
+      <div 
+        id="demotwo-content" 
+        style={{ minHeight: '100vh', background: '#ffffff' }} 
+      />
+    );
+  }
 
   return (
     <div 
