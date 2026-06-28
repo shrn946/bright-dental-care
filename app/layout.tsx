@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScriptInit from "@/components/ScriptInit";
 import ScriptLoader from "@/components/ScriptLoader";
+import Preloader from "@/components/Preloader";
 import "./globals.css";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
@@ -43,16 +44,7 @@ export default function RootLayout({
         <link href="/css/custom.css" rel="stylesheet" media="screen" />
       </head>
       <body>
-        {/* Preloader Start */}
-        <div className="preloader">
-          <div className="loading-container">
-            <div className="loading"></div>
-            <div id="loading-icon">
-              <img src="/images/loader.svg" alt="loading..." />
-            </div>
-          </div>
-        </div>
-        {/* Preloader End */}
+        <Preloader />
 
         {/* Mouse Cursor Start */}
         <div className="custom-cursor">
