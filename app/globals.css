@@ -258,9 +258,9 @@ body {
   border-radius: 100px !important;
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06) !important;
   margin: 0 auto !important;
-  max-width: 1200px !important;
-  width: calc(100% - 30px) !important;
-  padding: 8px 24px !important;
+  max-width: 1400px !important;
+  width: calc(100% - 40px) !important;
+  padding: 8px 32px !important;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
@@ -270,6 +270,25 @@ body {
   box-shadow: 0 15px 45px rgba(0, 0, 0, 0.1) !important;
   border-color: rgba(94, 94, 238, 0.15) !important;
 }
+
+/* Top margin/padding adjustments to accommodate the floating header and prevent text overlap */
+.hero-section {
+  padding-top: 190px !important;
+}
+
+.page-header {
+  padding-top: 180px !important;
+}
+
+@media only screen and (max-width: 991px) {
+  .hero-section {
+    padding-top: 150px !important;
+  }
+  .page-header {
+    padding-top: 140px !important;
+  }
+}
+
 
 .navbar {
   padding: 0 !important;
