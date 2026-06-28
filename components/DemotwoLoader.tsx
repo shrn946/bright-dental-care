@@ -58,7 +58,7 @@ export default function DemotwoLoader({ bodyContent, bodyClass }: DemotwoLoaderP
         hasCustomBreakpoints: true
       },
       version: "3.27.5",
-      urls: { assets: "/demotwo/wp-content/plugins/elementor/assets/" },
+      urls: { assets: "/demotwo/assets/plugins/elementor/assets/" },
       swiperClass: "swiper",
       kit: {
         active_breakpoints: ["viewport_mobile", "viewport_tablet"],
@@ -76,8 +76,8 @@ export default function DemotwoLoader({ bodyContent, bodyClass }: DemotwoLoaderP
 
     // Core jQuery requirements that must be loaded and initialized first
     const coreScripts = [
-      '/demotwo/wp-includes/js/jquery/jquery.minf43b.js?ver=3.7.1',
-      '/demotwo/wp-includes/js/jquery/jquery-migrate.min5589.js?ver=3.4.1'
+      '/demotwo/includes/js/jquery/jquery.minf43b.js?ver=3.7.1',
+      '/demotwo/includes/js/jquery/jquery-migrate.min5589.js?ver=3.4.1'
     ];
 
     const pageScripts = Array.from(container.querySelectorAll('script'));
