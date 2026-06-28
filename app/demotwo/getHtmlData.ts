@@ -24,22 +24,23 @@ export function getHtmlData(slugs: string[]): HtmlData | null {
 
   let html = fs.readFileSync(filePath, 'utf8');
 
-  // Regex to match and replace local relative asset links (wp-content, wp-includes)
-  // Ensure we prefix them with /demotwo/ so Next.js static asset server serves them correctly
-  html = html.replace(/(src|href|action)=["'](wp-content|wp-includes)([^"']*)["']/g, '$1="/demotwo/$2$3"');
+  // --- Normalization Pipeline ---
+  // 1. Remove absolute domain prefixes
+  html = html.replace(/https:\/\/kinforce\.net\/dentis\//g, '');
   
-  // Also handle url() calls inside inline stylesheet styles (e.g. background-image: url('wp-content/...'))
-  html = html.replaceAll("url('wp-content/", "url('/demotwo/wp-content/");
-  html = html.replaceAll("url(\"wp-content/", "url(\"/demotwo/wp-content/");
-  html = html.replaceAll("url(wp-content/", "url(/demotwo/wp-content/");
-  html = html.replaceAll("url('wp-includes/", "url('/demotwo/wp-includes/");
-  html = html.replaceAll("url(\"wp-includes/", "url(\"/demotwo/wp-includes/");
-  html = html.replaceAll("url(wp-includes/", "url(/demotwo/wp-includes/");
+  // 2. Remove relative parent directories (../ or ../../)
+  html = html.replace(/(?:\.\.\/)+wp-content/g, 'wp-content');
+  html = html.replace(/(?:\.\.\/)+wp-includes/g, 'wp-includes');
+  
+  // 3. Remove existing /demotwo/ prefixes to avoid duplicates
+  html = html.replaceAll('/demotwo/wp-content', 'wp-content');
+  html = html.replaceAll('/demotwo/wp-includes', 'wp-includes');
 
-  // Replace crawled kinforce.net root absolute links with relative /demotwo links
-  html = html.replace(/href=["']https:\/\/kinforce\.net\/dentis\/([^"']*)["']/g, 'href="/demotwo/$1"');
-  
-  // Replace direct relative page links inside anchors (e.g., href="about/" or href="about/index.html")
+  // 4. Prepend absolute /demotwo/ prefixes to all occurrences globally
+  html = html.replaceAll('wp-content', '/demotwo/wp-content');
+  html = html.replaceAll('wp-includes', '/demotwo/wp-includes');
+
+  // 5. Replace relative page links inside anchors (e.g., href="about/" or href="about/index.html")
   const pagesList = ['about', 'contact', 'services', 'faq', 'pricing', 'gallery', 'doctors', 'appointment'];
   pagesList.forEach((pageName) => {
     // Matches href="about", href="about/", href="about/index.html", etc.
@@ -63,11 +64,7 @@ export function getHtmlData(slugs: string[]): HtmlData | null {
   // Extract all stylesheets (<link rel='stylesheet'>) from head
   const stylesheetMatches = html.match(/<link rel=['"]stylesheet['"][^>]*>/g) || [];
   const stylesheets = stylesheetMatches.map((link) => {
-    let updatedLink = link;
-    if (!link.includes('href="/') && !link.includes('href="http')) {
-      updatedLink = link.replace(/href=['"]([^'"]+)['"]/, 'href="/demotwo/$1"');
-    }
-    return updatedLink;
+    return link;
   });
 
   // Extract all inline stylesheets (<style>) from head
