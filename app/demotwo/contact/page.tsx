@@ -33,7 +33,7 @@ export default function DemotwoContact() {
           <div className="grid-2">
             <div>
               <span className="subtitle">Get In Touch</span>
-              <h2 className="main-title" style={{ marginBottom: '20px' }}>Contact Dentis Clinic Today</h2>
+              <h2 className="main-title" style={{ marginBottom: '20px' }}>Contact Smile Care Clinic Today</h2>
               <p style={{ color: 'var(--text-light)', marginBottom: '35px' }}>
                 Have questions about billing, insurance, or general dental appointments? Fill out our form or get in touch directly via email/phone.
               </p>

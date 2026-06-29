@@ -1,9 +1,31 @@
 'use client';
 
 import Link from 'next/link';
+import { useState, useEffect } from 'react';
 import { PageHeader } from '../components';
 
 export default function DemotwoAbout() {
+  const [patientsCount, setPatientsCount] = useState(0);
+  const [casesCount, setCasesCount] = useState(0);
+  const [doctorsCount, setDoctorsCount] = useState(0);
+
+  useEffect(() => {
+    const duration = 1500;
+    const steps = 30;
+    const stepTime = duration / steps;
+
+    let step = 0;
+    const interval = setInterval(() => {
+      step++;
+      setPatientsCount(Math.min(Math.floor((step / steps) * 6700), 6700));
+      setCasesCount(Math.min(Math.floor((step / steps) * 8500), 8500));
+      setDoctorsCount(Math.min(Math.floor((step / steps) * 140), 140));
+      if (step >= steps) clearInterval(interval);
+    }, stepTime);
+
+    return () => clearInterval(interval);
+  }, []);
+
   const values = [
     { title: 'Premium Hygiene', icon: 'fa-pump-medical', desc: 'Strict multi-stage autoclave sterilization protocols exceeding local health guidelines for child and adult safety.' },
     { title: 'Gentle Care', icon: 'fa-face-smile', desc: 'Customized pain-free sedation options and ultra-fine localized anesthetics to make visits comfortable.' },
@@ -35,7 +57,7 @@ export default function DemotwoAbout() {
               <span className="subtitle">Introduction</span>
               <h2 className="main-title" style={{ marginBottom: '20px' }}>Gentle, Precision Dental Care For Your Whole Family</h2>
               <p style={{ color: 'var(--text-light)', marginBottom: '15px' }}>
-                Since 2012, Dentis clinic has provided exceptional preventative and cosmetic dental treatments. We bring together board-certified clinicians who utilize modern diagnostic workflows to build your healthy smile.
+                Since 2012, Smile Care clinic has provided exceptional preventative and cosmetic dental treatments. We bring together board-certified clinicians who utilize modern diagnostic workflows to build your healthy smile.
               </p>
               <p style={{ color: 'var(--text-light)', marginBottom: '25px' }}>
                 Whether you need a simple aesthetic filling, professional whitening, or complex implant restoration, we customize your treatment timeline for optimal longevity.
@@ -75,15 +97,15 @@ export default function DemotwoAbout() {
         <div className="container">
           <div className="grid-3">
             <div className="counter-item">
-              <div className="counter-number">6,700+</div>
+              <div className="counter-number">{patientsCount.toLocaleString()}+</div>
               <div className="counter-label">Satisfied Patients</div>
             </div>
             <div className="counter-item">
-              <div className="counter-number">8,500+</div>
+              <div className="counter-number">{casesCount.toLocaleString()}+</div>
               <div className="counter-label">Cases Done So Far</div>
             </div>
             <div className="counter-item">
-              <div className="counter-number">140+</div>
+              <div className="counter-number">{doctorsCount}+</div>
               <div className="counter-label">Expert Dentists</div>
             </div>
           </div>
@@ -94,7 +116,7 @@ export default function DemotwoAbout() {
       <section className="section-padding">
         <div className="container" style={{ textAlign: 'center', maxWidth: '800px' }}>
           <span className="subtitle">Our Mission</span>
-          <h2 className="main-title" style={{ marginBottom: '20px' }}>Helping You Smile With Comfort & Confidence</h2>
+          <h2 className="main-title" style={{ marginBottom: '20px' }}>Helping You Smile With Comfort &amp; Confidence</h2>
           <p style={{ color: 'var(--text-light)', marginBottom: '30px', fontSize: '17px' }}>
             We believe that a dentist visit should be reassuring and painless. Our friendly clinical team prioritizes education and preventative therapy to ensure your natural teeth remain strong for a lifetime.
           </p>
@@ -107,3 +129,4 @@ export default function DemotwoAbout() {
     </main>
   );
 }
+

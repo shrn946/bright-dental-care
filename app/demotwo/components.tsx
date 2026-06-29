@@ -46,7 +46,7 @@ export function Header() {
           <Link href="/demotwo" style={{ display: 'flex', alignItems: 'center' }}>
             <img 
               src="/demotwo/assets/uploads/2024/05/logo2.png" 
-              alt="Dentis Logo" 
+              alt="Smile Care Logo" 
               style={{ height: '63px', width: 'auto', objectFit: 'contain' }} 
             />
           </Link>
@@ -359,7 +359,7 @@ export function Footer() {
 
         <div className="footer-bottom" style={{ justifyContent: 'center', textAlign: 'center' }}>
           <p style={{ margin: 0 }}>
-            <a href="http://coreweblabs.com/" target="_blank" rel="noopener noreferrer" className="copyright-link" style={{ color: 'var(--primary-color)', fontWeight: '700', textDecoration: 'none' }}>coreweblabs</a>. &copy; 2026 Dentis clinic. All Rights Reserved.
+            <a href="http://coreweblabs.com/" target="_blank" rel="noopener noreferrer" className="copyright-link" style={{ color: 'var(--primary-color)', fontWeight: '700', textDecoration: 'none' }}>coreweblabs</a>. &copy; 2026 Smile Care clinic. All Rights Reserved.
           </p>
         </div>
       </div>

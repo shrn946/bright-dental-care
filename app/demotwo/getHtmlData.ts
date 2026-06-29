@@ -46,7 +46,7 @@ export function getHtmlData(slugs: string[]): HtmlData | null {
 
   // Extract meta title
   const titleMatch = html.match(/<title>([^<]*)<\/title>/i);
-  const title = titleMatch ? titleMatch[1].trim() : 'Dentis';
+  const title = titleMatch ? titleMatch[1].trim() : 'Smile Care';
 
   // Extract body content and classes
   const bodyMatch = html.match(/<body class="([^"]+)"[^>]*>([\s\S]*)<\/body>/i);

@@ -9,7 +9,7 @@ interface DemotwoSlugPageProps {
 export async function generateMetadata({ params }: DemotwoSlugPageProps) {
   const { slug } = await params;
   const data = getHtmlData(slug);
-  if (!data) return { title: 'Dentis' };
+  if (!data) return { title: 'Smile Care' };
   return {
     title: data.title,
   };

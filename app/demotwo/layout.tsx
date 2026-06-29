@@ -3,7 +3,7 @@ import './demotwo.css';
 import { Header, Footer, ScrollObserver } from './components';
 
 export const metadata: Metadata = {
-  title: "Dentis – Premium Dental Clinic",
+  title: "Smile Care – Premium Dental Clinic",
   description: "Separate dental clinic website built cleanly in React and Next.js.",
 };
 

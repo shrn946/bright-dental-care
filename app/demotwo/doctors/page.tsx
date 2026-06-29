@@ -52,7 +52,7 @@ export default function DemotwoDoctors() {
             <span className="subtitle">Join Our Team</span>
             <h2 className="main-title" style={{ marginBottom: '20px' }}>Looking for Career Opportunities?</h2>
             <p style={{ color: 'var(--text-light)', marginBottom: '15px' }}>
-              Dentis clinic is always looking for qualified dental hygienists, oral assistants, and specialty coordinators to join our growing clinical practice.
+              Smile Care clinic is always looking for qualified dental hygienists, oral assistants, and specialty coordinators to join our growing clinical practice.
             </p>
             <Link href="/demotwo/contact" className="btn-primary">
               Send Your CV

@@ -19,7 +19,7 @@ export default function DemotwoPricing() {
         <div className="container">
           <div className="title-center">
             <span className="subtitle">Payment Options</span>
-            <h2 className="main-title">Dentis Insurance & Subscription Plans</h2>
+            <h2 className="main-title">Smile Care Insurance & Subscription Plans</h2>
           </div>
 
           <div className="grid-3">

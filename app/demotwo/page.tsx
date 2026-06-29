@@ -167,13 +167,13 @@ export default function DemotwoHome() {
         <div className="container">
           <div className="grid-2" style={{ alignItems: 'center' }}>
             <div className="welcome-images animate-left">
-              <img src="/demotwo/assets/uploads/2024/05/dental-abt-img-1.jpg" alt="Dentis Clinic Lobby" className="welcome-img-main" />
+              <img src="/demotwo/assets/uploads/2024/05/dental-abt-img-1.jpg" alt="Smile Care Clinic Lobby" className="welcome-img-main" />
               <img src="/demotwo/assets/uploads/2024/05/dental-abt-img-2.jpg" alt="Patient Checkup" className="welcome-img-secondary" />
             </div>
             
             <div className="welcome-content animate-right">
               <span className="subtitle">Get To Know About Us</span>
-              <h2 className="main-title" style={{ marginBottom: '20px' }}>Welcome to Our Dentis Dental Clinic</h2>
+              <h2 className="main-title" style={{ marginBottom: '20px' }}>Welcome to Our Smile Care Dental Clinic</h2>
               <p style={{ color: 'var(--text-light)', marginBottom: '20px' }}>
                 Etiam scelerisque nec elit ac efficitur. Duis vestibulum magna sit amet ante gravida malesuada. Nunc gravida dui scelerisque libero venenatis hendrerit vestibulum euismod, lacus.
               </p>
